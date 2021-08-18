@@ -2,19 +2,18 @@ const nodemailer=require('nodemailer')
 const express=require('express')
 const app=express();
 const { google } = require('googleapis')
-const connectdatabase =require('./database.js')
+const connectdatabase =require('./config/database.js')
 const Email =require('./model.js')
+const {config}=require('dotenv')
 app.use(express.json())
 
-
-var email;
-
+config({path:'config/.env'})
 connectdatabase();
-const CLIENT_ID = '708551692016-4bg21h28g3af8381fvn50drd1f4vtkij.apps.googleusercontent.com';
-const CLEINT_SECRET = 'xNwYPsRrQ1PXz5HTjUnzHXgK';
- const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLEINT_SECRET = process.env.CLEINT_SECRET;
+ const REDIRECT_URI = process.env.REDIRECT_URI;
 
-const REFRESH_TOKEN = '1//04KTkE8q1BsFOCgYIARAAGAQSNwF-L9Ir8MI31OxYpV28w3hFv5j6en2kk_2kI_cpc5d1t8l0Q_p_cvEXkODg-W6JGrs8zVSE_Jc';
+const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
 const oAuth2Client=new google.auth.OAuth2(CLIENT_ID,CLEINT_SECRET,REDIRECT_URI)
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 

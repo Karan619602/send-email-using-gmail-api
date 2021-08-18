@@ -1,8 +1,8 @@
 const mongoose =require('mongoose')
-
-const CONNECTION_URL='mongodb+srv://karan619:11014803119@cluster0.ivb6v.mongodb.net/calenderapp?retryWrites=true&w=majority'
+const dotenv =require('dotenv')
+process.env.CONNECTION_URI
 const connectdatabase=()=>{
-    mongoose.connect(CONNECTION_URL,{
+    mongoose.connect(process.env.CONNECTION_URI ,{
         useNewUrlParser: true, 
         useUnifiedTopology: true,
         useFindAndModify:false,
