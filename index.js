@@ -7,6 +7,8 @@ const Email =require('./model.js')
 const {config}=require('dotenv')
 app.use(express.json())
 
+
+
 config({path:'config/.env'})
 connectdatabase();
 const CLIENT_ID = process.env.CLIENT_ID;
